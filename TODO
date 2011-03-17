@@ -1,0 +1,13 @@
+== TODO ==
+
+= Objectif =
+
+Réaliser une base de données permettant une gestion clair et facile du matos du projet.
+Il faudra aussi évidemment fournir une interface pour l'utilisation de cette BDD.
+
+= Caractéristiques =
+
+Permettre une gestion des stocks (matos acheté, perdu, cassé, utilisé dans telle ou telle armure/arme...)
+Faire la différence utilisateur/admin
+Permettre de faire une réservation du matos (gérer le faite d'emprunter et de rendre le matos)
+A chaque instant il faut pouvoir déterminer qui a quoi en sa possession, le matos défectueux etc...

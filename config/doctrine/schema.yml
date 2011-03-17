@@ -1,0 +1,56 @@
+Profile:
+  actAs: { Timestampable: ~ }
+  columns:
+    user_id: { type: integer }
+    login_utc: { type: string(8) }
+  relations:
+    User: { onDelete: CASCADE, onUpdate: CASCADE, local: user_id, foreign: id, foreignAlias: Profile, foreignType: one, class: sfGuardUser}
+
+Materiel:
+  actAs: { Timestampable: ~, SoftDelete: ~ }
+  columns:
+    nom: { type: string(100) }
+    reference: { type: string(100) }
+    description: { type: string }
+
+Equipement:
+  actAs: { Timestampable: ~, SoftDelete: ~ }
+  columns:
+    nom: { type: string(100) }
+    description: { type: string }
+
+Etat:
+  columns:
+    nom: { type: string(100) }
+    disponible: { type: boolean }
+
+Stock:
+  actAs: { Timestampable: ~ }
+  columns:
+    materiel_id: { type: integer }
+    etat_id: { type: integer }
+    nombre: { type: integer }
+  relations:
+    Materiel: { onDelete: CASCADE, onUpdate: CASCADE, local: materiel_id, foreign: id }
+    Etat: { onDelete: CASCADE, onUpdate: CASCADE, local: etat_id, foreign: id }
+
+Emprunt:
+  actAs: { Timestampable: ~, }
+  columns:
+    materiel_id: { type: integer }
+    user_id: { type: integer }
+    nombre: { type: integer }
+    rendu: { type: boolean }
+  relations:
+    Materiel: { onDelete: CASCADE, onUpdate: CASCADE, local: materiel_id, foreign: id }
+    User: { onDelete: CASCADE, onUpdate: CASCADE, local: user_id, foreign: id, class: sfGuardUser}
+
+Assemblage:
+  actAs: { Timestampable: ~, }
+  columns:
+    materiel_id: { type: integer }
+    equipement_id: { type: integer }
+    nombre: { type: integer }
+  relations:
+    Materiel: { onDelete: CASCADE, onUpdate: CASCADE, local: materiel_id, foreign: id }
+    Equipement: { onDelete: CASCADE, onUpdate: CASCADE, local: equipement_id, foreign: id }
