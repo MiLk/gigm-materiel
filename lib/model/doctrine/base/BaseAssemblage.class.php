@@ -41,6 +41,10 @@ abstract class BaseAssemblage extends sfDoctrineRecord
         $this->hasColumn('nombre', 'integer', null, array(
              'type' => 'integer',
              ));
+
+        $this->option('collate', 'utf8_unicode_ci');
+        $this->option('charset', 'utf8');
+        $this->option('type', 'InnoDB');
     }
 
     public function setUp()

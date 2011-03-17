@@ -47,6 +47,10 @@ abstract class BaseEmprunt extends sfDoctrineRecord
         $this->hasColumn('rendu', 'boolean', null, array(
              'type' => 'boolean',
              ));
+
+        $this->option('collate', 'utf8_unicode_ci');
+        $this->option('charset', 'utf8');
+        $this->option('type', 'InnoDB');
     }
 
     public function setUp()

@@ -33,6 +33,10 @@ abstract class BaseEquipement extends sfDoctrineRecord
         $this->hasColumn('description', 'string', null, array(
              'type' => 'string',
              ));
+
+        $this->option('collate', 'utf8_unicode_ci');
+        $this->option('charset', 'utf8');
+        $this->option('type', 'InnoDB');
     }
 
     public function setUp()
