@@ -7,4 +7,6 @@ config/databases.yml
 mkmf.log
 .rsync*
 backups/*
+Capfile
+config/deploy.rb
 
