@@ -3,14 +3,6 @@ options:
   charset: utf8
   type: InnoDB
 
-Profile:
-  actAs: { Timestampable: ~ }
-  columns:
-    user_id: { type: integer }
-    login_utc: { type: string(8) }
-  relations:
-    User: { onDelete: CASCADE, onUpdate: CASCADE, local: user_id, foreign: id, foreignAlias: Profile, foreignType: one, class: sfGuardUser}
-
 Materiel:
   actAs: { Timestampable: ~, SoftDelete: ~ }
   columns:

@@ -1,0 +1,10 @@
+body { padding: 0px; margin: 0px;}
+
+#menu { background: #222222; color: #FFFFFF; padding: 30px; font-size: 1.2em; }
+#menu a { color: #EEEEEE; text-decoration: none; font-weight: bold; }
+#menu a:hover { color: #CCCCCC; }
+
+#menu ul { padding: 0; margin: 5px 0; list-style: none;}
+#menu ul li { display: inline-block; padding: 0 5px; }
+
+#content { padding: 30px; }

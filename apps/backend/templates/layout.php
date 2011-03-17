@@ -9,6 +9,16 @@
     <?php include_javascripts() ?>
   </head>
   <body>
-    <?php echo $sf_content ?>
+    <div id="menu">
+      <ul>
+        <li><?php echo link_to('Utilisateurs', 'sf_guard_user') ?></li>
+        <li><?php echo link_to('Groupes', 'sf_guard_group') ?></li>
+        <li><?php echo link_to('Permissions', 'sf_guard_permission') ?></li>
+        <li><?php echo link_to('Déconnexion', 'sf_guard_signout') ?></li>
+      </ul>
+    </div>
+    <div id="content">
+      <?php echo $sf_content ?>
+    </div>
   </body>
 </html>
