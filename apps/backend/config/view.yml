@@ -6,13 +6,13 @@ default:
     content-type: text/html
 
   metas:
-    #title:        symfony project
+    title:        GIGM - Matériel - Administration
     #description:  symfony project
     #keywords:     symfony, project
     #language:     en
     #robots:       index, follow
 
-  stylesheets:    [admin.css]
+  stylesheets:    []
 
   javascripts:    []
 

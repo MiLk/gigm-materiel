@@ -1,5 +1,57 @@
-# You can find more information about this file on the symfony website:
-# http://www.symfony-project.org/reference/1_4/en/11-App
-
-# default values
-#all:
+all:
+  sf_wp_admin:
+    site: GIGM Matériel
+    site_url: http://gigm-materiel.the-geek.net/
+    login_route: sfGuardAuth/signin
+    logout_route: sfGuardAuth/signout
+    items:
+      Materiel:
+        Materiel:
+          module:      materiel
+          action:      index
+          parameters:  []
+          credentials: []
+        Etat:
+          module:      etat
+          action:      index
+          parameters:  []
+          credentials: []
+      Equipement:
+        Equipement:
+          module:      equipement
+          action:      index
+          parameters:  []
+          credentials: []
+      Utilisation:
+         Stock:
+          module:      stock
+          action:      index
+          parameters:  []
+          credentials: []
+         Emprunt:
+          module:      emprunt
+          action:      index
+          parameters:  []
+          credentials: []
+         Assemblage:
+          module:      assemblage
+          action:      index
+          parameters:  []
+          credentials: []
+    sub_items:
+      Utilisateurs:
+        Utilisateurs:
+          module:      sfGuardUser
+          action:      index
+          parameters:  []
+          credentials: []
+        Groupes:
+          module:      sfGuardGroup
+          action:      index
+          parameters:  []
+          credentials: []
+        Permissions:
+          module:      sfGuardPermission
+          action:      index
+          parameters:  []
+          credentials: []

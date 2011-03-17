@@ -1,3 +1,57 @@
+assemblage:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Assemblage
+    module:               assemblage
+    prefix_path:          /assemblage
+    column:               id
+    with_wildcard_routes: true
+
+emprunt:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Emprunt
+    module:               emprunt
+    prefix_path:          /emprunt
+    column:               id
+    with_wildcard_routes: true
+
+stock:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Stock
+    module:               stock
+    prefix_path:          /stock
+    column:               id
+    with_wildcard_routes: true
+
+etat:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Etat
+    module:               etat
+    prefix_path:          /etat
+    column:               id
+    with_wildcard_routes: true
+
+equipement:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Equipement
+    module:               equipement
+    prefix_path:          /equipement
+    column:               id
+    with_wildcard_routes: true
+
+materiel:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Materiel
+    module:               materiel
+    prefix_path:          /Materiaux
+    column:               id
+    with_wildcard_routes: true
+
 homepage:
   url:   /
   param: { module: home, action: index }

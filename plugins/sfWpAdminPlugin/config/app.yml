@@ -1,0 +1,14 @@
+all:
+  sf_wp_admin:
+    web_dir:                      /sfWpAdminPlugin/
+    image_dir:                    /sfWpAdminPlugin/images/
+#    site_url:                    /
+    logout:                       true
+    site:                         My Site
+    include_path:                 true
+    include_jquery_no_conflict:   false
+#    login_form_class:             sfGuardFormSignin
+#    homepage:                     @homepage
+    login_route:                  sfWpAdminPlugin/login
+    logout_route:                 sfWpAdminPlugin/logout
+    

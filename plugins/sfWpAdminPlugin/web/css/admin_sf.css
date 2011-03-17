@@ -1,0 +1,29 @@
+.sf_admin_td_actions {
+  margin: 0;
+  padding: 0;
+  
+}
+.sf_admin_td_actions li {
+  float: left;
+  list-style: none;
+}
+
+.widefat th a {
+  color: #fff;
+}
+.widefat th a:hover {
+  color: #D7D7D7;
+}
+
+.submitbox .submit ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.submitbox .submit .sf_admin_action_save input {
+  background-color:#E5E5E5;
+  border-color:#80B5D0;
+  color:#224466;
+  font-weight: bold;
+}

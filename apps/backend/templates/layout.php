@@ -5,20 +5,13 @@
     <?php include_metas() ?>
     <?php include_title() ?>
     <link rel="shortcut icon" href="/favicon.ico" />
+    <?php sfWpAdmin::addAssets() ?>
     <?php include_stylesheets() ?>
     <?php include_javascripts() ?>
   </head>
   <body>
-    <div id="menu">
-      <ul>
-        <li><?php echo link_to('Utilisateurs', 'sf_guard_user') ?></li>
-        <li><?php echo link_to('Groupes', 'sf_guard_group') ?></li>
-        <li><?php echo link_to('Permissions', 'sf_guard_permission') ?></li>
-        <li><?php echo link_to('Déconnexion', 'sf_guard_signout') ?></li>
-      </ul>
-    </div>
-    <div id="content">
-      <?php echo $sf_content ?>
-    </div>
+    <?php include_partial('sfWpAdmin/header') ?>
+    <?php echo $sf_content ?>
+    <?php include_partial('sfWpAdmin/footer') ?>
   </body>
 </html>

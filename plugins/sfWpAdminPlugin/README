@@ -1,0 +1,140 @@
+# sfWpAdmin plugin #
+
+The `sfWpAdminPlugin` is a symfony plugin that provides an easy to customize
+and implement Wordpress inspired menu for your projects backend.
+
+## Installation ##
+
+  * Install the plugin (via a package)
+
+        symfony plugin:install sfWpAdminPlugin
+
+  * Install the plugin (via a Subversion checkout)
+  
+        svn co http://svn.symfony-project.com/plugins/sfWpAdminPlugin/trunk plugins/sfWpAdminPlugin
+
+  * Activate the plugin in the `config/ProjectConfiguration.class.php`
+  
+        [php]
+        class ProjectConfiguration extends sfProjectConfiguration
+        {
+          public function setup()
+          {
+            $this->enablePlugins(array(
+              'sfDoctrinePlugin', 
+              'sfWpAdminPlugin',
+              '...'
+            ));
+          }
+        }
+
+  * Activate the sfWpAdmin module in your 'settings.yml' 
+
+        all:
+          .settings:
+            enabled_modules:        [default, sfWpAdmin]
+            
+  * Include the sfWpAdminPlugin header in footer in your layout
+  
+        [PHP]
+        /* if you use include_stylesheets() make sure to add the WpAdmin assets */
+        <?php sfWpAdmin::addAssets() ?>
+        <?php include_stylesheets() ?>
+        
+        include_partial('sfWpAdmin/header')
+        ...
+          <?php echo $sf_data->getRaw('sf_content') ?>
+        ... 
+        include_partial('sfWpAdmin/footer')
+          
+  * Add sfWpAdmin options and your applications menu structure in your 'app.yml' 
+  
+        all:
+          sf_wp_admin:
+            site:                         My Site
+            items:
+              Item 1:
+                Child 1:
+                  module:      module_name
+                  action:      action_name
+                  parameters:  [ do: child 1 ]
+                  credentials: [ foobar ]
+                  alias:
+                    - { module: alternate_module, action: alternate_action, parameters: [ id: 1 ] }
+
+  * Clear you cache
+
+        symfony cc
+
+## Login screen ##
+
+To use the wordpress style login screen you need a form having the same fields 
+as sfGuardFormSignin (eg: username, password, remember).
+
+To activate the login action simply edit your 'settings.yml' to this:
+
+  all:
+    .actions:
+      login_module:           sfWpAdmin   # To be called when a non-authenticated user
+      login_action:           login       # Tries to access a secure page
+
+## Sample menu setup ##
+
+    sf_wp_admin:
+      items:                                              # Menu items that will show up in the main menu
+        Create:                                           # Main Group name
+          Article:                                        # Full name
+            module:     article                           # Module name
+            action:     new                               # Action name
+            parameters: [type: text]                      # Extra parameters to match
+            alias:                                        # Extra routes that will match this item
+              - { module: article, action: create, parameters: [type: text] }
+          Slideshow:
+            module:          article
+            action:          new
+            parameters:      [type: slideshow]
+            credentials:     [photo_editor, editor]       # Menu item will not be shown if user lacks credeantials
+            alias:
+              - { module: article, action: create, parameters: [type: slideshow] }
+        Manage:
+          Media:
+            module:     media
+            action:     index
+            parameters: []
+            alias:
+              - { module: media, action: edit }
+              - { module: media, action: new }
+              - { module: media, action: create }
+              - { module: media, action: update }
+      sub_items:                                         # Menu items that will show up on the right side
+        Users:
+          Users:
+            module:     sfGuardUser
+            action:     index
+            parameters: []
+            alias:
+              - { module: sfGuardUser, action: edit }
+              - { module: sfGuardUser, action: new }
+              - { module: sfGuardUser, action: create }
+              - { module: sfGuardUser, action: update }
+          
+          
+## Available sfWpAdmin options ##
+
+    sf_wp_admin:
+      web_dir:                      /sfWpAdminPlugin/           # web path for the 'sfWpAdminPlugin/web' directory
+      image_dir:                    /sfWpAdminPlugin/images/    # web path for the 'sfWpAdminPlugin/web/images/' directory
+      site_url:                     /                           # url used for the '< Back to website' link
+      logout:                       true                        # show the logout link ?
+      site:                         My Site                     # the name of your website
+      login_form_class:             sfGuardFormSignin           # form class used for the login page
+      homepage:                     @homepage                   # route to applications homepage
+      login_route:                  sfWpAdminPlugin/login       # login route
+      logout_route:                 sfWpAdminPlugin/logout      # logout route
+
+## To do ##
+
+There are probably a few bugs out there, as I build this plugin to be used mainly with 
+the sfGuard plugin, I'll get arround fixing them soon enough.
+
+Also comming soon is a wordpress based admin generator theme.
