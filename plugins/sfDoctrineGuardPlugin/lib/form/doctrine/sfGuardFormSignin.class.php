@@ -10,10 +10,13 @@
  */
 class sfGuardFormSignin extends BasesfGuardFormSignin
 {
+
   /**
    * @see sfForm
    */
   public function configure()
   {
+
   }
+
 }
