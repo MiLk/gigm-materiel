@@ -12,4 +12,9 @@
  */
 class Stock extends BaseStock
 {
+
+    public function addNombre($value)
+    {
+        $this->setNombre($this->getNombre()+$value);
+    }
 }
