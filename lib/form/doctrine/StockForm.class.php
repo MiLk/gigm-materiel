@@ -13,5 +13,6 @@ class StockForm extends BaseStockForm
   public function configure()
   {
     unset($this['created_at'],$this['updated_at']);
+    $this->getWidget('etat_id')->setDefault(1);
   }
 }
