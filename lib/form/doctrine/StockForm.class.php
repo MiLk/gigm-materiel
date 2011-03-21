@@ -12,5 +12,6 @@ class StockForm extends BaseStockForm
 {
   public function configure()
   {
+    unset($this['created_at'],$this['update_at']);
   }
 }

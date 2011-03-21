@@ -12,5 +12,6 @@ class EmpruntForm extends BaseEmpruntForm
 {
   public function configure()
   {
+    unset($this['created_at'],$this['update_at']);
   }
 }
