@@ -13,9 +13,14 @@ generator:
 
     config:
       actions: ~
-      fields:  ~
-      list:    ~
+      fields:
+        reference: { help: "Référence du composant" }
+      list:
+        display: [=nom, reference, description]
+        title: Liste du matériel
       filter:  ~
       form:    ~
-      edit:    ~
-      new:     ~
+      edit:
+        title: Modification d'un matériel
+      new:
+        title: Ajout d'un matériel

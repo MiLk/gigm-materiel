@@ -14,8 +14,12 @@ generator:
     config:
       actions: ~
       fields:  ~
-      list:    ~
+      list:
+        display: [=nom, disponible]
+        title: Liste des Etats
       filter:  ~
       form:    ~
-      edit:    ~
-      new:     ~
+      edit:
+        title: Modification d'un Etat
+      new:
+        title: Ajout d'un Etat
