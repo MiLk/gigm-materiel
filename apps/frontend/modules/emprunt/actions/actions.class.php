@@ -10,34 +10,38 @@
  */
 class empruntActions extends sfActions
 {
- /**
-  * Executes index action
-  *
-  * @param sfRequest $request A request object
-  */
-  public function executeIndex(sfWebRequest $request)
-  {
-    $this->forward('default', 'module');
-  }
 
-  public function executeEmprunter(sfWebRequest $request)
-  {
-     $emprunt = new Emprunt();
-     $emprunt->setUser($this->getUser()->getGuardUser());
-     $emprunt->setMaterielId($request->getParameter('materiel',null));
+    /**
+     * Executes index action
+     *
+     * @param sfRequest $request A request object
+     */
+    public function executeIndex(sfWebRequest $request)
+    {
+        $this->forward('default','module');
+    }
 
-     $this->form = new NewEmpruntForm($emprunt);
-     
-     $this->form->bind($request->getParameter($this->form->getName()),$request->getFiles($this->form->getName()));
-     if($this->form->isValid())
-     {
-         $dispo = StockTable::getInstance()->findOneByMaterielIdAndEtatId($this->form->getObject()->getMaterielId(),1);
-         if($dispo->getNombre() >= $this->form->getObject()->getNombre())
-         {
-             $this->form->save();
-             $dispo->addNombre(-($this->form->getObject()->getNombre()));
-             $dispo->save();
-         }
-     }
-   }
+    public function executeEmprunter(sfWebRequest $request)
+    {
+        $emprunt = new Emprunt();
+        $emprunt->setUser($this->getUser()->getGuardUser());
+        $emprunt->setMaterielId($request->getParameter('materiel',null));
+
+        $this->form = new NewEmpruntForm($emprunt);
+        if($request->isMethod('post'))
+        {
+            $this->form->bind($request->getParameter($this->form->getName()),$request->getFiles($this->form->getName()));
+            if($this->form->isValid())
+            {
+                $dispo = StockTable::getInstance()->findOneByMaterielIdAndEtatId($this->form->getObject()->getMaterielId(),1);
+                if($dispo->getNombre() >= $this->form->getObject()->getNombre())
+                {
+                    $this->form->save();
+                    $dispo->addNombre(-($this->form->getObject()->getNombre()));
+                    $dispo->save();
+                }
+            }
+        }
+    }
+
 }
