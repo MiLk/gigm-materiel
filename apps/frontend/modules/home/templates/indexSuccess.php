@@ -10,7 +10,7 @@
         <div class="content">
             <ul class="disponible">
             <?php foreach($disponible as $row): ?>
-                <li><?php echo $row->getNombre() ?>x <?php echo $row->getMateriel() ?> - <a href="<?php echo url_for('emprunt/emprunter?materiel='.$row->primaryKey()) ?>">Emprunter</a></li>
+                <li><?php echo $row->getNombre() ?>x <?php echo $row->getMateriel() ?> - <a href="<?php echo url_for('emprunt/emprunter?materiel='.$row->getPrimaryKey()) ?>">Emprunter</a></li>
             <?php endforeach ?>
                 </ul>
                 <ul class="emprunt">
