@@ -16,4 +16,14 @@ class EmpruntTable extends Doctrine_Table
     {
         return Doctrine_Core::getTable('Emprunt');
     }
+
+    public function getAllByUser($user_id)
+    {
+        $q = $this->createQuery('q')
+          ->where('q.user_id = ?',$user_id)
+          ->andWhere('q.rendu = ?',false)
+          ->orderBy('q.created_at ASC');
+
+        return $q;
+    }
 }
