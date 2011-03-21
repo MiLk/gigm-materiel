@@ -12,6 +12,6 @@ class EquipementForm extends BaseEquipementForm
 {
   public function configure()
   {
-    unset($this['created_at'],$this['update_at'],$this['deleted_at']);
+    unset($this['created_at'],$this['updated_at'],$this['deleted_at']);
   }
 }

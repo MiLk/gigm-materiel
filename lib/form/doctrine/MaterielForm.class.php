@@ -12,6 +12,6 @@ class MaterielForm extends BaseMaterielForm
 {
   public function configure()
   {
-    unset($this['created_at'],$this['update_at']);
+    unset($this['created_at'],$this['updated_at'],$this['deleted_at']);
   }
 }
