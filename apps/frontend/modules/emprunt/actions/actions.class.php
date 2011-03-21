@@ -22,10 +22,12 @@ class empruntActions extends sfActions
 
   public function executeEmprunter(sfWebRequest $request)
   {
-     $this->form = new NewEmpruntForm();
-     $this->form->setUser($this->getUser()->getGuardUser());
-     $this->form->setMaterielId($request->getParameter('materiel',null));
+     $emprunt = new Emprunt();
+     $emprunt->setUser($this->getUser()->getGuardUser());
+     $emprunt->setMaterielId($request->getParameter('materiel',null));
 
+     $this->form = new NewEmpruntForm($emprunt);
+     
      $this->form->bind($request->getParameter($this->form->getName()),$request->getFiles($this->form->getName()));
      if($this->form->isValid())
      {
