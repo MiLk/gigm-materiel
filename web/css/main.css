@@ -1,4 +1,22 @@
-.content ul{
+#home .content ul{
   list-style: none;
   display: inline-block;
+  vertical-align: top;
+  border: #000 1px solid;
+  padding: 5px;
+  margin: 5px;
+  width: 30%;
+}
+
+#home .content ul.disponible
+{
+  border-color: #009900;
+}
+
+#home .content ul.emprunt{
+  border-color: #CC0000;
+}
+
+#home .content ul.assemblage{
+  border-color: #00019b;
 }
