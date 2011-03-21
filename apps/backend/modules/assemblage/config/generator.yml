@@ -14,8 +14,12 @@ generator:
     config:
       actions: ~
       fields:  ~
-      list:    ~
+      list:
+        display: [=materiel, equipement, nombre]
+        title: Liste des assemblages
       filter:  ~
       form:    ~
-      edit:    ~
-      new:     ~
+      edit:
+        title: Modification d'un assemblage
+      new:
+        title: Ajout d'un assemblage

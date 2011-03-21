@@ -23,4 +23,4 @@ generator:
       edit:
         title: Modification d'un emprunt
       new:
-        title: Ajout d'un emprunt
+        title: Nouvel emprunt
