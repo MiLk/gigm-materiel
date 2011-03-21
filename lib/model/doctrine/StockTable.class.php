@@ -17,29 +17,32 @@ class StockTable extends Doctrine_Table
         return Doctrine_Core::getTable('Stock');
     }
 
-    public function getAllWhereDisponible()
+    public function getAll()
     {
       $q = $this->createQuery('q')
-        ->where('q.etat_id = ?',1)
-        ->orderBy('q.nom ASC');
+        ->leftJoin('q.Materiel m')
+        ->orderBy('m.nom ASC');
+
+      return $q;
+    }
+
+    public function getAllWhereDisponible()
+    {
+      $q = $this->getAll()->where('q.etat_id = ?',1);
 
       return $q;
     }
 
     public function getAllWhereEmprunte()
     {
-      $q = $this->createQuery('q')
-        ->where('q.etat_id = ?',6)
-        ->orderBy('q.nom ASC');
+      $q = $this->getAll()->where('q.etat_id = ?',6);
 
       return $q;
     }
 
     public function getAllWhereAssemble()
     {
-      $q = $this->createQuery('q')
-        ->where('q.etat_id = ?',5)
-        ->orderBy('q.nom ASC');
+      $q = $this->getAll()->where('q.etat_id = ?',5);
 
       return $q;
     }
