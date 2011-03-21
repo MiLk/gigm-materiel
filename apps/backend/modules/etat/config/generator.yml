@@ -16,10 +16,10 @@ generator:
       fields:  ~
       list:
         display: [=nom, disponible]
-        title: Liste des Etats
+        title: Liste des états
       filter:  ~
       form:    ~
       edit:
-        title: Modification d'un Etat
+        title: Modification d'un état
       new:
-        title: Ajout d'un Etat
+        title: Ajout d'un état

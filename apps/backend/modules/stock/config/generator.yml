@@ -14,8 +14,12 @@ generator:
     config:
       actions: ~
       fields:  ~
-      list:    ~
+      list:
+        display: [=materiel, etat, nombre]
+        title: Liste du matériel stocké
       filter:  ~
       form:    ~
-      edit:    ~
-      new:     ~
+      edit:
+        title: Modification du stock
+      new:
+        title: Ajout d'un matériel au stock

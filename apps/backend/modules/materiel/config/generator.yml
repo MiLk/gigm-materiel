@@ -14,7 +14,7 @@ generator:
     config:
       actions: ~
       fields:
-        reference: { help: "Référence du composant" }
+        reference: { label: "Référence", help: "Référence du composant" } 
       list:
         display: [=nom, reference, description]
         title: Liste du matériel

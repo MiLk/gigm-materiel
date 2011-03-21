@@ -13,9 +13,14 @@ generator:
 
     config:
       actions: ~
-      fields:  ~
-      list:    ~
+      fields:
+        user: { label: "Utilisateur" }
+      list:
+        display: [=materiel, user, nombre, rendu]
+        title: Liste des emprunts
       filter:  ~
       form:    ~
-      edit:    ~
-      new:     ~
+      edit:
+        title: Modification d'un emprunt
+      new:
+        title: Ajout d'un emprunt
