@@ -12,4 +12,10 @@
  */
 class Materiel extends BaseMateriel
 {
+
+    public function __toString()
+    {
+        return $this->getNom().' ( '.$this->getReference().' )';
+    }
+
 }

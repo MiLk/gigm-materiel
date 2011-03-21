@@ -12,4 +12,10 @@
  */
 class Equipement extends BaseEquipement
 {
+
+    public function __toString()
+    {
+        return $this->getNom();
+    }
+
 }
