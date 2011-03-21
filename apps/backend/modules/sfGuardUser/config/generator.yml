@@ -1,0 +1,38 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           sfGuardUser
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          sf_guard_user
+    with_doctrine_route:   true
+
+    config:
+      fields:
+        first_name: { label: "Prénom" }
+        last_name: { label: "Nom" }
+        email_address: { label: "Email" }
+        username: { label: "Login UTC", help: "Important !!!" }
+        password: { label: "Mot de passe"}
+        password_again: { label: "Confirmation" }
+        is_super_admin: { label: "Admin" }
+        last_login: { label: "Dernière connexion" }
+
+      list:
+        title:   Liste des utilisateurs
+        display: [=username, first_name, email_address, is_super_admin, last_login]
+
+      form:
+        class: sfGuardUserAdminForm
+        display:
+          "User":                   [first_name, last_name, email_address, username, password, password_again]
+          "Permissions and groups": [is_active, is_super_admin, groups_list, permissions_list]
+
+      edit:
+        title: Editer l'utilisateur "%%username%%"
+
+      new:
+        title: Ajouter un utilisateur
