@@ -25,6 +25,7 @@ class empruntActions extends sfActions
     {
         $emprunt = new Emprunt();
         $emprunt->setUser($this->getUser()->getGuardUser());
+        $emprunt->setRendu(false);
         if(!$request->isMethod('post'))
           $emprunt->setMaterielId($request->getParameter('materiel',null));
 

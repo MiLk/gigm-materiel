@@ -22,7 +22,7 @@ class NewEmpruntForm extends EmpruntForm
          'rendu' => new sfWidgetFormInputHidden(),
         ));
 
-        $this->getWidget('rendu')->setDefault(false);
+        $this->widgetSchema->setNameFormat('emprunt[%s]');
     }
 
 }
