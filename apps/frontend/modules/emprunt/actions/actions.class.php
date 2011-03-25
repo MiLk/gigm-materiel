@@ -35,8 +35,8 @@ class empruntActions extends sfActions
             $this->form->bind($request->getParameter($this->form->getName()),$request->getFiles($this->form->getName()));
             if($this->form->isValid())
             {
-                $dispo = StockTable::getInstance()->findOneByMaterielIdAndEtatId($this->form->getValues('materiel_id'),1);
-                if($dispo->getNombre() >= $this->form->getValue('nombre'))
+                $dispo = StockTable::getInstance()->findOneByMaterielIdAndEtatId($this->form->getValue('materiel_id'),1);
+                if($dispo && $dispo->getNombre() >= $this->form->getValue('nombre'))
                 {
                     $this->form->save();
                     $dispo->addNombre(-($this->form->getValue('nombre')));
