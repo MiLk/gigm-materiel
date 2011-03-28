@@ -11,18 +11,20 @@
 class NewEmpruntForm extends EmpruntForm
 {
 
-    public function configure()
-    {
-        parent::configure();
-        $this->setWidgets(array(
-         'id' => new sfWidgetFormInputHidden(),
-         'materiel_id' => new sfWidgetFormInputHidden(),
-         'user_id' => new sfWidgetFormInputHidden(),
-         'nombre' => new sfWidgetFormInputText(),
-         'rendu' => new sfWidgetFormInputHidden(),
-        ));
+  public function configure()
+  {
+    parent::configure();
+    $this->setWidgets(array(
+     'id' => new sfWidgetFormInputHidden(),
+     'materiel_id' => new sfWidgetFormInputHidden(),
+     'user_id' => new sfWidgetFormInputHidden(),
+     'nombre' => new sfWidgetFormInputText(),
+     'rendu' => new sfWidgetFormInputHidden(),
+    ));
 
-        $this->widgetSchema->setNameFormat('emprunt[%s]');
-    }
+    $this->getValidator('nombre')->setOption('min',1);
+    
+    $this->widgetSchema->setNameFormat('emprunt[%s]');
+  }
 
 }
