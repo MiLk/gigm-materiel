@@ -23,7 +23,7 @@
         </ul>
         <ul class="emprunt">
             <?php foreach($emprunte as $row): ?>
-                        <li><?php echo $row->getNombre() ?>x <?php echo $row->getMateriel() ?></li>
+                        <li><?php echo $row->getNombre() ?>x <?php echo $row->getMateriel() ?> - <a href="<?php echo url_for('emprunt/show?materiel='.$row->getMaterielId()) ?>">Consulter les emprunts</a></li>
             <?php endforeach ?>
         </ul>
         <ul class="assemblage">

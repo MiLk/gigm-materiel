@@ -57,4 +57,9 @@ class empruntActions extends sfActions
     $this->redirect('homepage');
   }
 
+  public function executeShow(sfWebRequest $request)
+  {
+    $this->emprunts = EmpruntTable::getInstance()->getAllByMateriel($request->getParameter('materiel_id',null))->execute()->getData();
+  }
+
 }

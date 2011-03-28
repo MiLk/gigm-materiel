@@ -26,4 +26,13 @@ class EmpruntTable extends Doctrine_Table
 
         return $q;
     }
+    public function getAllByMateriel($materiel_id)
+    {
+      $q = $this->createQuery('q')
+        ->where('q.materiel_id = ?',$materiel_id)
+        ->andWhere('q.rendu = ?',false)
+        ->orderBy('q.created_at ASC');
+
+      return $q;
+    }
 }
