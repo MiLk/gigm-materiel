@@ -35,11 +35,10 @@ class empruntActions extends sfActions
       $this->form->bind($request->getParameter($this->form->getName()),$request->getFiles($this->form->getName()));
       if($this->form->isValid())
       {
-
         if($emprunt->emprunter($this->form))
-          $this->getUser()->setFlash('notice','Vous avez emprunté '.$nombre.' '.$this->getMateriel().'.');
+          $this->getUser()->setFlash('notice','Vous avez emprunté '.$nombre.' '.$emprunt->getMateriel().'.');
         else
-          $this->getUser()->setFlash('error','Impossible d\'emprunter '.$nombre.' '.$this->getMateriel().', '.$dispo->getNombre().' restants.');
+          $this->getUser()->setFlash('error','Impossible d\'emprunter '.$nombre.' '.$emprunt->getMateriel().', '.$dispo->getNombre().' restants.');
 
         $this->redirect('homepage');
       }
