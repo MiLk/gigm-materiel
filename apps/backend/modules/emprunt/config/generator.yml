@@ -18,6 +18,14 @@ generator:
       list:
         display: [=materiel, user, nombre, rendu]
         title: Liste des emprunts
+        batch_actions:
+          rendre:     ~
+          _edit:      ~
+          _delete:    ~
+        object_actions:
+          rendre:     ~
+          _edit:      ~
+          _delete:    ~
       filter:  ~
       form:    ~
       edit:
