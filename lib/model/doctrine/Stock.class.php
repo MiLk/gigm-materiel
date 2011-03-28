@@ -13,8 +13,15 @@
 class Stock extends BaseStock
 {
 
-    public function addNombre($value)
-    {
-        $this->setNombre($this->getNombre()+$value);
-    }
+  public function addNombre($value)
+  {
+    $this->setNombre($this->getNombre() + $value);
+  }
+
+  public function postSave($event)
+  {
+    if($this->getNombre() == 0)
+      $this->delete();
+  }
+
 }
