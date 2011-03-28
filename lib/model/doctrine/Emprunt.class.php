@@ -15,17 +15,20 @@ class Emprunt extends BaseEmprunt
 
   public function rendre()
   {
-    $this->setRendu(true);
+    if(!$this->getRendu())
+    {
+      $this->setRendu(true);
 
-    $stock_dispo = StockTable::getInstance()->findOneByMaterielIdAndEtatId($this->getMaterielId(),1);
-    $stock_dispo->addNombre($this->getNombre());
+      $stock_dispo = StockTable::getInstance()->findOneByMaterielIdAndEtatId($this->getMaterielId(),1);
+      $stock_dispo->addNombre($this->getNombre());
 
-    $emprunte = StockTable::getInstance()->findOneByMaterielIdAndEtatId($this->getMaterielId(),6);
-    $emprunte->addNombre(-($this->getNombre()));
+      $emprunte = StockTable::getInstance()->findOneByMaterielIdAndEtatId($this->getMaterielId(),6);
+      $emprunte->addNombre(-($this->getNombre()));
 
-    $this->save();
-    $stock_dispo->save();
-    $emprunte->save();
+      $this->save();
+      $stock_dispo->save();
+      $emprunte->save();
+    }
   }
 
   public function emprunter($form)
