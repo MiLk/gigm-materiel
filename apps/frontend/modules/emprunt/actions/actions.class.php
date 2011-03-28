@@ -36,39 +36,11 @@ class empruntActions extends sfActions
       if($this->form->isValid())
       {
 
-        $materiel_id = $this->form->getValue('materiel_id');
-        $nombre = $this->form->getValue('nombre');
-
-        /*
-         * Debut de code à placer dans le model
-         */
-        $dispo = StockTable::getInstance()->findOneByMaterielIdAndEtatId($materiel_id,1);
-        if($dispo && $dispo->getNombre() >= $nombre)
-        {
-          $this->form->save();
-          $dispo->addNombre(-($nombre));
-          $dispo->save();
-
-          $emprunte = StockTable::getInstance()->findOneByMaterielIdAndEtatId($materiel_id,6);
-          if(!$emprunte)
-          {
-            $emprunte = new Stock();
-            $emprunte->setNombre($nombre);
-            $emprunte->setMaterielId($materiel_id);
-            $emprunte->setEtatId(6);
-          }
-          else
-          {
-            $emprunte->addNombre($nombre);
-          }
-          $emprunte->save();
-          $this->getUser()->setFlash('notice','Vous avez emprunté '.$nombre.' '.$emprunt->getMateriel().'.');
-        }
+        if($emprunt->emprunter($this->form))
+          $this->getUser()->setFlash('notice','Vous avez emprunté '.$nombre.' '.$this->getMateriel().'.');
         else
-          $this->getUser()->setFlash('error','Impossible d\'emprunter '.$nombre.' '.$emprunt->getMateriel().', '.$dispo->getNombre().' restants.');
-        /*
-         * Fin de code à placer dans le model
-         */
+          $this->getUser()->setFlash('error','Impossible d\'emprunter '.$nombre.' '.$this->getMateriel().', '.$dispo->getNombre().' restants.');
+
         $this->redirect('homepage');
       }
     }
@@ -77,23 +49,10 @@ class empruntActions extends sfActions
   public function executeRendre(sfWebRequest $request)
   {
     $this->redirectUnless($emprunt = EmpruntTable::getInstance()->find($request->getParameter('emprunt',null)),'homepage');
-    /*
-     * Debut de code à placer dans le model
-     */
-    $emprunt->setRendu(true);
 
-    $stock_dispo = StockTable::getInstance()->findOneByMaterielIdAndEtatId($emprunt->getMaterielId(),1);
-    $stock_dispo->addNombre($emprunt->getNombre());
+    $emprunt->rendre();
 
-    $emprunte = StockTable::getInstance()->findOneByMaterielIdAndEtatId($emprunt->getMaterielId(),6);
-    $emprunte->addNombre(-($emprunt->getNombre()));
-
-    $emprunt->save();
-    $stock_dispo->save();
-    $emprunte->save();
-    /*
-     * Fin de code à placer dans le model
-     */
+    $this->getUser()->setFlash('notice','Vous avez rendu '.$emprunt->getNombre().' '.$emprunt->getMateriel().'.');
 
     $this->redirect('homepage');
   }
