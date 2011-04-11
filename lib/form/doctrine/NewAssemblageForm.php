@@ -23,7 +23,7 @@ class NewAssemblageForm extends AssemblageForm
     ));
 
     $this->getValidator('nombre')->setOption('min',1);
-    $this->validatorSchema['emprunt_id'] = new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Emprunt'), 'required' => false));
+    $this->validatorSchema['emprunt_id'] = new sfValidatorInteger(array('required' => false));
     $this->widgetSchema->setNameFormat('assemblage[%s]');
   }
 
