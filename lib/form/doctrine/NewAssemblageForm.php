@@ -23,7 +23,7 @@ class NewAssemblageForm extends AssemblageForm
 
     $this->getValidator('nombre')->setOption('min',1);
 
-    $this->widgetSchema->setNameFormat('emprunt[%s]');
+    $this->widgetSchema->setNameFormat('assemblage[%s]');
   }
 
 }
