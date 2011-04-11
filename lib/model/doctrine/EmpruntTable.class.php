@@ -56,6 +56,8 @@ class EmpruntTable extends Doctrine_Table
   {
     $q = $this->createQuery('q')
         ->where('q.emprunt_id ='.$emprunt_id);
+
+    return $q;
   }
 
 }
