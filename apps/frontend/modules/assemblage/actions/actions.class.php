@@ -26,4 +26,24 @@ class assemblageActions extends sfActions
     $this->assemblage = AssemblageTable::getInstance()->getByEquipement($request->getParameter('equipement',null))->execute()->getData();
   }
 
+  public function executeAssembler(sfWebRequest $request)
+  {
+    $assemblage = new Assemblage();
+    if(!$request->isMethod('post'))
+      $assemblage->setMaterielId($request->getParameter('materiel',null));
+
+    $this->form = new NewAssemblageForm($assemblage);
+    if($request->isMethod('post'))
+    {
+      $this->form->bind($request->getParameter($this->form->getName()),$request->getFiles($this->form->getName()));
+      if($this->form->isValid())
+      {
+        if($assemblage->assembler($this->form))
+          $this->getUser()->setFlash('notice','Vous avez assemblé '.$nombre.' '.$assemblage->getMateriel().'sur '.$assemblage->getEquipement.'.');
+        else
+          $this->getUser()->setFlash('error','Impossible d\'assembler '.$nombre.' '.$assemblage->getMateriel().', '.$dispo->getNombre().' restants.');
+
+        $this->redirect('homepage');
+      }
+    }
 }

@@ -11,30 +11,30 @@
         Mes emprunts :
         <ul>
             <?php foreach($mes_emprunts as $row): ?>
-                <li><?php echo $row->getNombre() ?>x <strong><?php echo $row->getMateriel() ?></strong> - <a href="<?php echo url_for('emprunt/rendre?emprunt='.$row->getPrimaryKey()) ?>">Rendre</a></li>
+                <li><?php echo $row->getNombre() ?>x <strong><?php echo $row->getMateriel() ?></strong> - <a href="<?php echo url_for('emprunt/rendre?emprunt='.$row->getPrimaryKey()) ?>">Rendre</a> - <a href="<?php echo url_for('assemblage/assembler?materiel='.$row->getPrimaryKey()) ?>">Assembler</a></li>
             <?php endforeach ?>
         </ul>
         Emprunts de mon groupe :
         <ul>
             <?php foreach($mes_emprunts_group as $row): ?>
-                <li><?php echo $row->getNombre() ?>x <strong><?php echo $row->getMateriel() ?></strong> par <strong><?php echo $row->getUser() ?></strong> pour le groupe <strong><?php echo $row->getGroup() ?></strong> - <a href="<?php echo url_for('emprunt/rendre?emprunt='.$row->getPrimaryKey()) ?>">Rendre</a></li>
+              <li><?php echo $row->getNombre() ?>x <strong><?php echo $row->getMateriel() ?></strong> par <strong><?php echo $row->getUser() ?></strong> pour le groupe <strong><?php echo $row->getGroup() ?></strong> - <a href="<?php echo url_for('emprunt/rendre?emprunt='.$row->getPrimaryKey()) ?>">Rendre</a> - <a href="<?php echo url_for('assemblage/assembler?materiel='.$row->getPrimaryKey()) ?>">Assembler</a></li>
             <?php endforeach ?>
         </ul>
      </div>
      <div class="content">
         <ul class="disponible">
             <?php foreach($disponible as $row): ?>
-                <li><?php echo $row->getNombre() ?>x <strong><?php echo $row->getMateriel() ?></strong> - <a href="<?php echo url_for('emprunt/emprunter?materiel='.$row->getMaterielId()) ?>">Emprunter</a></li>
+                <li><?php echo $row->getNombre() ?>x <?php echo $row->getMateriel() ?> - <a href="<?php echo url_for('emprunt/emprunter?materiel='.$row->getMaterielId()) ?>">Emprunter</a></li>
             <?php endforeach ?>
         </ul>
         <ul class="emprunt">
             <?php foreach($emprunte as $row): ?>
-                <li><?php echo $row->getNombre() ?>x <strong><?php echo $row->getMateriel() ?></strong> - <a href="<?php echo url_for('emprunt/show?materiel='.$row->getMaterielId()) ?>">Consulter les emprunts</a></li>
+                <li><?php echo $row->getNombre() ?>x <?php echo $row->getMateriel() ?> - <a href="<?php echo url_for('emprunt/show?materiel='.$row->getMaterielId()) ?>">Consulter les emprunts</a></li>
             <?php endforeach ?>
         </ul>
         <ul class="assemblage">
             <?php foreach($assemble as $row): ?>
-                <li><strong><?php echo $row->getEquipement() ?></strong> - <a href="<?php echo url_for('assemblage/show?equipement='.$row->getEquipementId()) ?>">Consulter les assemblages</a></li>
+                <li><?php echo $row->getEquipement() ?> - <a href="<?php echo url_for('assemblage/show?equipement='.$row->getEquipementId()) ?>">Consulter les assemblages</a></li>
             <?php endforeach ?>
         </ul>
     </div>
