@@ -11,13 +11,13 @@
         Mes emprunts :
         <ul>
             <?php foreach($mes_emprunts as $row): ?>
-                <li><?php echo $row->getNombre() ?>x <strong><?php echo $row->getMateriel() ?></strong> - <a href="<?php echo url_for('emprunt/rendre?emprunt='.$row->getPrimaryKey()) ?>">Rendre</a> - <a href="<?php echo url_for('assemblage/assembler?materiel='.$row->getPrimaryKey().'&nombre='.$row->getNombre()) ?>">Assembler</a></li>
+                <li><?php echo $row->getNombre() ?>x <strong><?php echo $row->getMateriel() ?></strong> - <a href="<?php echo url_for('emprunt/rendre?emprunt='.$row->getPrimaryKey()) ?>">Rendre</a> - <a href="<?php echo url_for('assemblage/assembler?materiel='.$row->getPrimaryKey()) ?>">Assembler</a></li>
             <?php endforeach ?>
         </ul>
         Emprunts de mon groupe :
         <ul>
             <?php foreach($mes_emprunts_group as $row): ?>
-              <li><?php echo $row->getNombre() ?>x <strong><?php echo $row->getMateriel() ?></strong> par <strong><?php echo $row->getUser() ?></strong> pour le groupe <strong><?php echo $row->getGroup() ?></strong> - <a href="<?php echo url_for('emprunt/rendre?emprunt='.$row->getPrimaryKey().'&nombre='.$row->getNombre()) ?>">Rendre</a> - <a href="<?php echo url_for('assemblage/assembler?materiel='.$row->getPrimaryKey()) ?>">Assembler</a></li>
+              <li><?php echo $row->getNombre() ?>x <strong><?php echo $row->getMateriel() ?></strong> par <strong><?php echo $row->getUser() ?></strong> pour le groupe <strong><?php echo $row->getGroup() ?></strong> - <a href="<?php echo url_for('emprunt/rendre?emprunt='.$row->getPrimaryKey()) ?>">Rendre</a> - <a href="<?php echo url_for('assemblage/assembler?materiel='.$row->getPrimaryKey()) ?>">Assembler</a></li>
             <?php endforeach ?>
         </ul>
      </div>

@@ -28,16 +28,14 @@ class assemblageActions extends sfActions
 
   public function executeAssembler(sfWebRequest $request)
   {
+    $emprunt = EmpruntTable::getInstance()->find($request->getParameter('emprunt',null));
+
     $assemblage = new Assemblage();
     if(!$request->isMethod('post'))
     {
-      $assemblage->setMaterielId($request->getParameter('materiel',null));
-      $assemblage->setNombre($request->getParameter('nombre',null));
+      $assemblage->setMaterielId($emprunt->getMaterielId());
+      $assemblage->setNombre($emprunt->getNombre());
     }
-
-    // rendre l'emprunt avant de l'assembler
-    $emprunt->rendre();
-    $this->getUser()->setFlash('notice','Vous avez rendu '.$emprunt->getNombre().' '.$emprunt->getMateriel().'.');
 
     $this->form = new NewAssemblageForm($assemblage);
     if($request->isMethod('post'))
@@ -45,6 +43,8 @@ class assemblageActions extends sfActions
       $this->form->bind($request->getParameter($this->form->getName()),$request->getFiles($this->form->getName()));
       if($this->form->isValid())
       {
+        $emprunt->rendre();
+
         if($assemblage->assembler($this->form))
           $this->getUser()->setFlash('notice','Vous avez assemblé '.$nombre.' '.$assemblage->getMateriel().'sur '.$assemblage->getEquipement.'.');
         else
@@ -54,4 +54,5 @@ class assemblageActions extends sfActions
       }
     }
   }
+
 }
