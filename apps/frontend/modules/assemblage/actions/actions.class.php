@@ -29,6 +29,7 @@ class assemblageActions extends sfActions
   public function executeAssembler(sfWebRequest $request)
   {
     $emprunt = EmpruntTable::getInstance()->find($request->getParameter('emprunt',null));
+    $emprunt_id = $request->getParameter('emprunt',null);
 
     $assemblage = new Assemblage();
     if(!$request->isMethod('post'))
