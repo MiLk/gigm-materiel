@@ -23,7 +23,7 @@ class assemblageActions extends sfActions
 
   public function executeShow(sfWebRequest $request)
   {
-    $this->assemblage = AssemblageTable::getInstance()->getByEquipement($this->getParameter('equipement',null))->execute()->getData();
+    $this->assemblage = AssemblageTable::getInstance()->getByEquipement($request->getParameter('equipement',null))->execute()->getData();
   }
 
 }
