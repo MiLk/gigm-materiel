@@ -7,49 +7,45 @@
  */
 class StockTable extends Doctrine_Table
 {
-    /**
-     * Returns an instance of this class.
-     *
-     * @return object StockTable
-     */
-    public static function getInstance()
-    {
-        return Doctrine_Core::getTable('Stock');
-    }
 
-    public function getAll()
-    {
-      $q = $this->createQuery('q')
+  /**
+   * Returns an instance of this class.
+   *
+   * @return object StockTable
+   */
+  public static function getInstance()
+  {
+    return Doctrine_Core::getTable('Stock');
+  }
+
+  public function getAll()
+  {
+    $q = $this->createQuery('q')
         ->leftJoin('q.Materiel m')
         ->orderBy('m.nom ASC');
 
-      return $q;
-    }
+    return $q;
+  }
 
-    public function getAllWhereDisponible()
-    {
-      $q = $this->getAll()->where('q.etat_id = ?',1);
+  public function getAllWhereDisponible()
+  {
+    $q = $this->getAll()->where('q.etat_id = ?',1);
 
-      return $q;
-    }
+    return $q;
+  }
 
-    public function getAllWhereEmprunte()
-    {
-      $q = $this->getAll()->where('q.etat_id = ?',6);
+  public function getAllWhereEmprunte()
+  {
+    $q = $this->getAll()->where('q.etat_id = ?',6);
 
-      return $q;
-    }
+    return $q;
+  }
 
-    public function getAllWhereAssemble()
-    {
-      $q = $this->getAll()->where('q.etat_id = ?',5);
+  public function getAllWhereAssemble()
+  {
+    $q = $this->getAll()->where('q.etat_id = ?',5);
 
-      return $q;
-    }
+    return $q;
+  }
 
-    public function getOneByEmpruntId($emprunt_id)
-    {
-      $q = $this->getAll('q')
-        ->where('q.emprunt_id ='.$emprunt_id);
-    }
 }

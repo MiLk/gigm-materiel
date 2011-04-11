@@ -32,11 +32,11 @@ class EmpruntTable extends Doctrine_Table
   {
     $q = $this->createQuery('q')
         ->orderBy('q.created_at ASC');
-    
+
     foreach($groups as $group)
     {
       $q = $q->orwhere('q.group_id = ?',$group->getId())
-        ->andWhere('q.rendu = ?',false);
+          ->andWhere('q.rendu = ?',false);
     }
 
     return $q;
@@ -50,6 +50,12 @@ class EmpruntTable extends Doctrine_Table
         ->orderBy('q.created_at ASC');
 
     return $q;
+  }
+
+  public function getOneById($emprunt_id)
+  {
+    $q = $this->getAll('q')
+        ->where('q.emprunt_id ='.$emprunt_id);
   }
 
 }
