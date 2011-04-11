@@ -46,4 +46,10 @@ class StockTable extends Doctrine_Table
 
       return $q;
     }
+
+    public function getOneByEmpruntId($emprunt_id)
+    {
+      $q = $this->getAll('q')
+        ->where('q.emprunt_id ='.$emprunt_id);
+    }
 }

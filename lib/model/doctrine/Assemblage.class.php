@@ -20,7 +20,7 @@ class Assemblage extends BaseAssemblage
     $equipement_id = $form->getValue('equipement_id');
     $nombre = $form->getValue('nombre');
 
-    $stock = StockTable::getInstance()->findOneByMaterielId($emprunt_id);
+    $stock = StockTable::getInstance()->getOneByEmpruntId($emprunt_id);
     $stock->rendre();
 
     $form->save();
