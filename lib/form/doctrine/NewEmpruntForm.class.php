@@ -18,6 +18,7 @@ class NewEmpruntForm extends EmpruntForm
      'id' => new sfWidgetFormInputHidden(),
      'materiel_id' => new sfWidgetFormInputHidden(),
      'user_id' => new sfWidgetFormInputHidden(),
+     'group_id' => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Group'), 'add_empty' => true)),
      'nombre' => new sfWidgetFormInputText(),
      'rendu' => new sfWidgetFormInputHidden(),
     ));

@@ -28,6 +28,19 @@ class EmpruntTable extends Doctrine_Table
     return $q;
   }
 
+  public function getAllByUserAndGroup($user_id,$groups_id)
+  {
+    $q = $this->getAllByUser($user_id);
+    
+    foreach($groups_id as $group_id)
+    {
+      $q = $q->orwhere('q.group_id = ?',$group_id)
+        ->andWhere('q.rendu = ?',false);
+    }
+
+    return $q;
+  }
+
   public function getAllByMateriel($materiel_id)
   {
     $q = $this->createQuery('q')
