@@ -7,13 +7,24 @@
  */
 class AssemblageTable extends Doctrine_Table
 {
-    /**
-     * Returns an instance of this class.
-     *
-     * @return object AssemblageTable
-     */
-    public static function getInstance()
-    {
-        return Doctrine_Core::getTable('Assemblage');
-    }
+
+  /**
+   * Returns an instance of this class.
+   *
+   * @return object AssemblageTable
+   */
+  public static function getInstance()
+  {
+    return Doctrine_Core::getTable('Assemblage');
+  }
+
+  public function getAllEquipementWhereAssemble()
+  {
+    $q = $this->createQuery('q')
+        ->groupBy('q.equipement_id')
+        ->orderBy('q.equipement_id DESC');
+
+    return $q;
+  }
+
 }

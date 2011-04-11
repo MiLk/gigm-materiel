@@ -28,7 +28,7 @@
         </ul>
         <ul class="assemblage">
             <?php foreach($assemble as $row): ?>
-                            <li><?php echo $row->getNombre() ?>x <?php echo $row->getMateriel() ?></li>
+                            <li><?php echo $row->getEquipement() ?> - <a href="<?php echo url_for('assemblage/show?assemblage='.$row->getEquipementId()) ?>">Consulter les assemblages</a> ?></li>
             <?php endforeach ?>
         </ul>
     </div>

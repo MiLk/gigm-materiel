@@ -20,7 +20,7 @@ class homeActions extends sfActions
     {
         $this->disponible = StockTable::getInstance()->getAllWhereDisponible()->execute()->getData();
         $this->emprunte = StockTable::getInstance()->getAllWhereEmprunte()->execute()->getData();
-        $this->assemble = StockTable::getInstance()->getAllWhereAssemble()->execute()->getData();
+        $this->assemble = AssemblageTable::getInstance()->getAllEquipementWhereAssemble()->execute()->getData();
 
         $this->mes_emprunts = EmpruntTable::getInstance()->getAllByUser($this->getUser()->getGuardUser()->getPrimaryKey())->execute()->getData();
     }

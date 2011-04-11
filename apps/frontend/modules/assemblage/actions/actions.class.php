@@ -10,13 +10,20 @@
  */
 class assemblageActions extends sfActions
 {
- /**
-  * Executes index action
-  *
-  * @param sfRequest $request A request object
-  */
+
+  /**
+   * Executes index action
+   *
+   * @param sfRequest $request A request object
+   */
   public function executeIndex(sfWebRequest $request)
   {
-    $this->forward('default', 'module');
+    $this->forward('default','module');
   }
+
+  public function executeShow(sfWebRequest $request)
+  {
+    $this->assemblage = AssemblageTable::getInstance()->getAllEquipementWhereAssemble()->execute()->getData();
+  }
+
 }

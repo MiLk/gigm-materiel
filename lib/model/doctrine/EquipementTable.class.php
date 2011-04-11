@@ -7,13 +7,15 @@
  */
 class EquipementTable extends Doctrine_Table
 {
-    /**
-     * Returns an instance of this class.
-     *
-     * @return object EquipementTable
-     */
-    public static function getInstance()
-    {
-        return Doctrine_Core::getTable('Equipement');
-    }
+
+  /**
+   * Returns an instance of this class.
+   *
+   * @return object EquipementTable
+   */
+  public static function getInstance()
+  {
+    return Doctrine_Core::getTable('Equipement');
+  }
+
 }
