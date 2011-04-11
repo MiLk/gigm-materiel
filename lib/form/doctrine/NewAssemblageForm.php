@@ -15,6 +15,7 @@ class NewAssemblageForm extends AssemblageForm
   {
     parent::configure();
     $this->setWidgets(array(
+     'emprunt_id' => new sfWidgetFormInputHidden(),
      'id' => new sfWidgetFormInputHidden(),
      'materiel_id' => new sfWidgetFormInputHidden(),
      'equipement_id' => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Equipement'), 'add_empty' => true)),
@@ -22,7 +23,7 @@ class NewAssemblageForm extends AssemblageForm
     ));
 
     $this->getValidator('nombre')->setOption('min',1);
-
+    $this->validatorSchema['emprunt_id'] = new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Emprunt'), 'required' => false));
     $this->widgetSchema->setNameFormat('assemblage[%s]');
   }
 

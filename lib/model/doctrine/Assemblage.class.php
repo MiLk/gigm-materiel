@@ -12,4 +12,17 @@
  */
 class Assemblage extends BaseAssemblage
 {
+
+  public function assembler($form)
+  {
+    $materiel_id = $form->getValue('materiel_id');
+    $equipement_id = $form->getValue('equipement_id');
+    $nombre = $form->getValue('nombre');
+
+    $stock = StockTable::getInstance()->findOneByMaterielId($form->getEmpruntId());
+    $stock->rendre();
+
+    $form->save();
+  }
+
 }

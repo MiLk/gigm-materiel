@@ -43,8 +43,6 @@ class assemblageActions extends sfActions
       $this->form->bind($request->getParameter($this->form->getName()),$request->getFiles($this->form->getName()));
       if($this->form->isValid())
       {
-        $emprunt->rendre();
-
         if($assemblage->assembler($this->form))
           $this->getUser()->setFlash('notice','Vous avez assemblé '.$nombre.' '.$assemblage->getMateriel().'sur '.$assemblage->getEquipement.'.');
         else
