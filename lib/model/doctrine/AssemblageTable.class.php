@@ -27,4 +27,12 @@ class AssemblageTable extends Doctrine_Table
     return $q;
   }
 
+  public function getByEquipement($equipementId)
+  {
+    $q = $this->createQuery('q')
+        ->where('q.equipement_id = '.$equipementId);
+
+    return $q;
+  }
+
 }
