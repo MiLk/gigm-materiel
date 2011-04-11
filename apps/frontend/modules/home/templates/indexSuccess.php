@@ -28,7 +28,7 @@
         </ul>
         <ul class="assemblage">
             <?php foreach($assemble as $row): ?>
-                            <li><?php echo $row->getEquipement() ?> - <a href="<?php echo url_for('assemblage/show?equipement='.$row->getEquipementId()) ?>">Consulter les assemblages</a></li>
+                            <li><?php echo ucfirst($row->getEquipement()) ?> - <a href="<?php echo url_for('assemblage/show?equipement='.$row->getEquipementId()) ?>">Consulter les assemblages</a></li>
             <?php endforeach ?>
         </ul>
     </div>
