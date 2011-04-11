@@ -46,4 +46,5 @@ class assemblageActions extends sfActions
         $this->redirect('homepage');
       }
     }
+  }
 }
