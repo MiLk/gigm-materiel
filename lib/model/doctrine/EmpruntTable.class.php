@@ -54,7 +54,7 @@ class EmpruntTable extends Doctrine_Table
 
   public function getOneById($emprunt_id)
   {
-    $q = $this->getAll('q')
+    $q = $this->createQuery('q')
         ->where('q.emprunt_id ='.$emprunt_id);
   }
 
