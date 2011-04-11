@@ -15,6 +15,7 @@ abstract class BaseEmpruntFormFilter extends BaseFormFilterDoctrine
     $this->setWidgets(array(
       'materiel_id' => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Materiel'), 'add_empty' => true)),
       'user_id'     => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('User'), 'add_empty' => true)),
+      'group_id'    => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Group'), 'add_empty' => true)),
       'nombre'      => new sfWidgetFormFilterInput(),
       'rendu'       => new sfWidgetFormChoice(array('choices' => array('' => 'yes or no', 1 => 'yes', 0 => 'no'))),
       'created_at'  => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate(), 'with_empty' => false)),
@@ -24,6 +25,7 @@ abstract class BaseEmpruntFormFilter extends BaseFormFilterDoctrine
     $this->setValidators(array(
       'materiel_id' => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('Materiel'), 'column' => 'id')),
       'user_id'     => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('User'), 'column' => 'id')),
+      'group_id'    => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('Group'), 'column' => 'id')),
       'nombre'      => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
       'rendu'       => new sfValidatorChoice(array('required' => false, 'choices' => array('', 1, 0))),
       'created_at'  => new sfValidatorDateRange(array('required' => false, 'from_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 00:00:00')), 'to_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 23:59:59')))),
@@ -50,6 +52,7 @@ abstract class BaseEmpruntFormFilter extends BaseFormFilterDoctrine
       'id'          => 'Number',
       'materiel_id' => 'ForeignKey',
       'user_id'     => 'ForeignKey',
+      'group_id'    => 'ForeignKey',
       'nombre'      => 'Number',
       'rendu'       => 'Boolean',
       'created_at'  => 'Date',

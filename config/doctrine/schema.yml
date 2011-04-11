@@ -32,18 +32,20 @@ Stock:
     Etat: { onDelete: CASCADE, onUpdate: CASCADE, local: etat_id, foreign: id }
 
 Emprunt:
-  actAs: { Timestampable: ~, }
+  actAs: { Timestampable: ~ }
   columns:
     materiel_id: { type: integer }
     user_id: { type: integer }
+    group_id: { type: integer }
     nombre: { type: integer }
     rendu: { type: boolean }
   relations:
     Materiel: { onDelete: CASCADE, onUpdate: CASCADE, local: materiel_id, foreign: id }
     User: { onDelete: CASCADE, onUpdate: CASCADE, local: user_id, foreign: id, class: sfGuardUser}
+    Group: { onDelete: CASCADE, onUpdate: CASCADE, local: group_id, foreign: id, class: sfGuardGroup}
 
 Assemblage:
-  actAs: { Timestampable: ~, }
+  actAs: { Timestampable: ~ }
   columns:
     materiel_id: { type: integer }
     equipement_id: { type: integer }

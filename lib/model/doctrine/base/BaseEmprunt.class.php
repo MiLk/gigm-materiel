@@ -7,23 +7,29 @@
  * 
  * @property integer $materiel_id
  * @property integer $user_id
+ * @property integer $group_id
  * @property integer $nombre
  * @property boolean $rendu
  * @property Materiel $Materiel
  * @property sfGuardUser $User
+ * @property sfGuardGroup $Group
  * 
- * @method integer     getMaterielId()  Returns the current record's "materiel_id" value
- * @method integer     getUserId()      Returns the current record's "user_id" value
- * @method integer     getNombre()      Returns the current record's "nombre" value
- * @method boolean     getRendu()       Returns the current record's "rendu" value
- * @method Materiel    getMateriel()    Returns the current record's "Materiel" value
- * @method sfGuardUser getUser()        Returns the current record's "User" value
- * @method Emprunt     setMaterielId()  Sets the current record's "materiel_id" value
- * @method Emprunt     setUserId()      Sets the current record's "user_id" value
- * @method Emprunt     setNombre()      Sets the current record's "nombre" value
- * @method Emprunt     setRendu()       Sets the current record's "rendu" value
- * @method Emprunt     setMateriel()    Sets the current record's "Materiel" value
- * @method Emprunt     setUser()        Sets the current record's "User" value
+ * @method integer      getMaterielId()  Returns the current record's "materiel_id" value
+ * @method integer      getUserId()      Returns the current record's "user_id" value
+ * @method integer      getGroupId()     Returns the current record's "group_id" value
+ * @method integer      getNombre()      Returns the current record's "nombre" value
+ * @method boolean      getRendu()       Returns the current record's "rendu" value
+ * @method Materiel     getMateriel()    Returns the current record's "Materiel" value
+ * @method sfGuardUser  getUser()        Returns the current record's "User" value
+ * @method sfGuardGroup getGroup()       Returns the current record's "Group" value
+ * @method Emprunt      setMaterielId()  Sets the current record's "materiel_id" value
+ * @method Emprunt      setUserId()      Sets the current record's "user_id" value
+ * @method Emprunt      setGroupId()     Sets the current record's "group_id" value
+ * @method Emprunt      setNombre()      Sets the current record's "nombre" value
+ * @method Emprunt      setRendu()       Sets the current record's "rendu" value
+ * @method Emprunt      setMateriel()    Sets the current record's "Materiel" value
+ * @method Emprunt      setUser()        Sets the current record's "User" value
+ * @method Emprunt      setGroup()       Sets the current record's "Group" value
  * 
  * @package    gigm-materiel
  * @subpackage model
@@ -39,6 +45,9 @@ abstract class BaseEmprunt extends sfDoctrineRecord
              'type' => 'integer',
              ));
         $this->hasColumn('user_id', 'integer', null, array(
+             'type' => 'integer',
+             ));
+        $this->hasColumn('group_id', 'integer', null, array(
              'type' => 'integer',
              ));
         $this->hasColumn('nombre', 'integer', null, array(
@@ -64,6 +73,12 @@ abstract class BaseEmprunt extends sfDoctrineRecord
 
         $this->hasOne('sfGuardUser as User', array(
              'local' => 'user_id',
+             'foreign' => 'id',
+             'onDelete' => 'CASCADE',
+             'onUpdate' => 'CASCADE'));
+
+        $this->hasOne('sfGuardGroup as Group', array(
+             'local' => 'group_id',
              'foreign' => 'id',
              'onDelete' => 'CASCADE',
              'onUpdate' => 'CASCADE'));
