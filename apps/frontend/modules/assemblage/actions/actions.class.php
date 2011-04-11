@@ -30,7 +30,14 @@ class assemblageActions extends sfActions
   {
     $assemblage = new Assemblage();
     if(!$request->isMethod('post'))
+    {
       $assemblage->setMaterielId($request->getParameter('materiel',null));
+      $assemblage->setNombre($request->getParameter('nombre',null));
+    }
+
+    // rendre l'emprunt avant de l'assembler
+    $emprunt->rendre();
+    $this->getUser()->setFlash('notice','Vous avez rendu '.$emprunt->getNombre().' '.$emprunt->getMateriel().'.');
 
     $this->form = new NewAssemblageForm($assemblage);
     if($request->isMethod('post'))

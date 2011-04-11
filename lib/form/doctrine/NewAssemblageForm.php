@@ -18,7 +18,7 @@ class NewAssemblageForm extends AssemblageForm
      'id' => new sfWidgetFormInputHidden(),
      'materiel_id' => new sfWidgetFormInputHidden(),
      'equipement_id' => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Equipement'), 'add_empty' => true)),
-     'nombre' => new sfWidgetFormInputText(),
+     'nombre' => new sfWidgetFormInputHidden(),
     ));
 
     $this->getValidator('nombre')->setOption('min',1);
