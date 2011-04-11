@@ -11,7 +11,7 @@
         Mes emprunts :
         <ul>
             <?php foreach($mes_emprunts as $row): ?>
-                <li><?php echo $row->getNombre() ?>x <strong><?php echo $row->getMateriel() ?></strong> - <a href="<?php echo url_for('emprunt/rendre?emprunt='.$row->getPrimaryKey()) ?>">Rendre</a> - <a href="<?php echo url_for('assemblage/assembler?materiel='.$row->getPrimaryKey()) ?>">Assembler</a></li>
+                <li><?php echo $row->getNombre() ?>x <strong><?php echo $row->getMateriel() ?></strong> - <a href="<?php echo url_for('emprunt/rendre?emprunt='.$row->getPrimaryKey()) ?>">Rendre</a> - <a href="<?php echo url_for('assemblage/assembler?emprunt='.$row->getPrimaryKey()) ?>">Assembler</a></li>
             <?php endforeach ?>
         </ul>
         Emprunts de mon groupe :
