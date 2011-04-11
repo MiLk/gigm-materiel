@@ -14,6 +14,12 @@
                 <li><?php echo $row->getNombre() ?>x <?php echo $row->getMateriel() ?> - <a href="<?php echo url_for('emprunt/rendre?emprunt='.$row->getPrimaryKey()) ?>">Rendre</a></li>
             <?php endforeach ?>
         </ul>
+        Emprunts de mon groupe :
+        <ul>
+            <?php foreach($mes_emprunts_group as $row): ?>
+                <li><?php echo $row->getNombre() ?>x <?php echo $row->getMateriel() ?> par <?php echo $row->getUser() ?> pour <?php echo $row->getGroup() ?> - <a href="<?php echo url_for('emprunt/rendre?emprunt='.$row->getPrimaryKey()) ?>">Rendre</a></li>
+            <?php endforeach ?>
+        </ul>
      </div>
      <div class="content">
         <ul class="disponible">

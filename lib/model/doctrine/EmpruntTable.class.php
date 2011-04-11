@@ -28,9 +28,10 @@ class EmpruntTable extends Doctrine_Table
     return $q;
   }
 
-  public function getAllByUserAndGroup($user_id,$groups)
+  public function getAllByGroup($groups)
   {
-    $q = $this->getAllByUser($user_id);
+    $q = $this->createQuery('q')
+        ->orderBy('q.created_at ASC');
     
     foreach($groups as $group)
     {
