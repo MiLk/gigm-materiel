@@ -21,7 +21,7 @@ class Assemblage extends BaseAssemblage
 
     $emprunt->rendre();
 
-    $form->save();
+    return $form->save();
   }
 
 }
