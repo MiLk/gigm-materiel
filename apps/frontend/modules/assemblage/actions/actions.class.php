@@ -44,9 +44,9 @@ class assemblageActions extends sfActions
       if($this->form->isValid())
       {
         if($assemblage->assembler($this->form,$emprunt))
-          $this->getUser()->setFlash('notice','Vous avez assemblé '.$nombre.' '.$assemblage->getMateriel().'sur '.$assemblage->getEquipement.'.');
+          $this->getUser()->setFlash('notice','Vous avez assemblé '.$assemblage->getNombre().' '.$assemblage->getMateriel().' sur '.$assemblage->getEquipement().'.');
         else
-          $this->getUser()->setFlash('error','Impossible d\'assembler '.$nombre.' '.$assemblage->getMateriel().', '.$dispo->getNombre().' restants.');
+          $this->getUser()->setFlash('error','Impossible d\'assembler '.$assemblage->getNombre().' '.$assemblage->getMateriel().' sur '.$assemblage->getEquipement().'.');
 
         $this->redirect('homepage');
       }
