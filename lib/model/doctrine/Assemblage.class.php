@@ -13,15 +13,13 @@
 class Assemblage extends BaseAssemblage
 {
 
-  public function assembler($form)
+  public function assembler($form,$emprunt)
   {
-    $emprunt_id = $form->getValue('emprunt_id');
     $materiel_id = $form->getValue('materiel_id');
     $equipement_id = $form->getValue('equipement_id');
     $nombre = $form->getValue('nombre');
 
-    $stock = EmpruntTable::getInstance()->getOneById($emprunt_id)->execute()->getData();
-    $stock->rendre();
+    $emprunt->rendre();
 
     $form->save();
   }
