@@ -21,7 +21,30 @@ class Assemblage extends BaseAssemblage
 
     $emprunt->rendre();
 
-    return $form->save();
+    $dispo = StockTable::getInstance()->findOneByMaterielIdAndEtatId($materiel_id,1);
+    if($dispo && $dispo->getNombre() >= $nombre)
+    {
+      $form->save();
+      $dispo->addNombre(-($nombre));
+      $dispo->save();
+
+      $assemble = StockTable::getInstance()->findOneByMaterielIdAndEtatId($materiel_id,5);
+      if(!$assemble)
+      {
+        $assemble = new Stock();
+        $assemble->setNombre($nombre);
+        $assemble->setMaterielId($materiel_id);
+        $assemble->setEtatId(5);
+      }
+      else
+      {
+        $assemble->addNombre($nombre);
+      }
+      $assemble->save();
+      return true;
+    }
+    else
+      return false;
   }
 
 }
